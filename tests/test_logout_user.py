@@ -8,17 +8,17 @@ class TestLogOutUser:
 
     def test_logout_user(self, driver):
         # Ожидание
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((element_card_is_located)))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(element_card_is_located))
         # Авторизация
         driver.find_element(*login_and_registration_button).click()
         driver.find_element(*email_input).send_keys(exist_user['email'])
         driver.find_element(*password_input).send_keys(exist_user['password'])
         driver.find_element(*login_button).click()
         # Ожидание
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((profile_name)))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(profile_name))
         # Выход из аккаунта
         driver.find_element(*logout_button).click()
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((login_and_registration_button)))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(login_and_registration_button))
         # Поиск элементов после разлогина, имя и аватар не должны отображаться, кнопка логина должна
         user_name = driver.find_elements(*profile_name)
         user_avatar = driver.find_elements(*profile_avatar)
